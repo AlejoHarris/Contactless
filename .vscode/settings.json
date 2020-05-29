@@ -1,0 +1,11 @@
+{
+    "liveServer.settings.port": 5500,
+    "liveServer.settings.root": "/",
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.https": {
+      "enable": true,
+      "cert": "C:/Users/Alejo/Desktop/Felipe/web/https/localhost.pem",
+      "key": "C:/Users/Alejo/Desktop/Felipe/web/https/localhost.key",
+      "passphrase": "747311"
+    }
+  }
