@@ -1,0 +1,187 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+a, a:active, a:focus, a:visited, a:hover {
+    color: black;
+    text-decoration: none;
+}
+.logo img {
+    width: 160px;
+}
+
+.link {
+  border-bottom: 1px solid black;
+}
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+header, footer {
+    padding: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 3;
+    position: relative;
+}
+footer {
+  position: fixed;
+  bottom: 40px;
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
+header a, header h1, footer a {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    color: black;
+}
+.page-wrapper {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+.page {
+    padding: 40px 30px;
+    text-align: justify;
+    background-color: #fff;
+    font-size: 1.0rem;
+    overflow: hidden;
+    position: absolute;
+    top: 0; right: 0; left: 0; bottom: 0;
+    z-index: 0;
+    opacity: 0;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+.page-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+@media (min-height : 600px) {
+    .page {
+        padding: 60px 40px;
+        font-size: 1.2rem;
+    }
+}
+@media (min-width : 900px) {
+    .page {
+        padding: 120px 60px;
+        font-size: 1.4rem;
+    }
+}
+.page-wide {
+    padding: 0;
+    max-width: 100% !important;
+}
+.page.enter {
+    animation: enterPage 0.4s;
+}
+.page.leave {
+    animation: leavePage 0.4s;
+
+}
+@keyframes enterPage {
+    0%   { opacity: 0; }
+    100% { opacity: 1;  }
+}
+@keyframes leavePage {
+    0%   { opacity: 1;  }
+    100% { opacity: 0;  }
+  }
+.page.active {
+    z-index: 2;
+    opacity: 1;
+}
+.page.scrollable::after {
+    content: '';
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 50px;
+    z-index: 2;
+    background: linear-gradient(0deg, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 100%);
+}
+.scrollable {
+    overflow-x: auto;
+    overflow-y: initial;
+    padding-bottom: 100px;
+}
+.fab {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    z-index: 99;
+    background: url('img/plus.png') center center no-repeat;
+    background-size: contain;
+    width: 60px;
+    height: 60px;
+    display: block;
+    transform: rotate(0deg);
+    transition: all 0.3s ease;
+}
+.fab.close {
+    transform: rotate(45deg);
+}
+
+.arrow {
+    background: url(img/flecha.png) center center no-repeat;
+    background-size: 30px 30px;
+    width: 60px;
+    height: 60px;
+    left: calc(50% - 30px);
+    position: fixed;
+    z-index: 4;
+    border: none;
+    /*transition: opacity 0.3s ease;*/
+    animation: arrowAnim 1s infinite;
+}
+@keyframes arrowAnim {
+    0% { opacity: 1 }
+    50% { opacity: 0.5 }
+    100% { opacity: 1 }
+}
+.arrow:hover, .arrow:active {
+    opacity: 1;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+.arrow-down {
+    bottom: 5px;
+    transform: rotate(180deg);
+}
+
+.arrow-up {
+    top: 25px;
+}
+
+.figure-desc {
+    font-size: 0.7rem;
+    padding: 0 1rem;
+}
+
+
+.embed-responsive-fp::before {
+    padding-top: 139%;
+}
+
+iframe {
+    max-height: 80vh;
+}

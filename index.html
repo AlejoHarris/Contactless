@@ -1,20 +1,280 @@
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-    <title>3D TESTING FP</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_32x32px.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon_96x96px.png">
 
-    <style>
-    	body{
-    		margin: 0;
-    		overflow: hidden;
-    	}
-    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="app.css">
+    <title>Felipe Pantone - Contactless</title>
 </head>
-<body>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.4.0/Tween.min.js"></script>
-    <script type ="module" src="js/sketchTest.js"></script>
-    
+<body class="">
+    <header class="py-2">
+        <a href="#page-home" class="logo">
+            <img src="img/logo.svg" />
+        </a>
+        <a href="#page-fp">FP</a>
+        <button class="arrow arrow-up"></button>
+    </header>
+    <div class="page-wrapper">
+        <div class="page scrollable active" id="page-home">
+            <p>Contactless is an art exhibition by Felipe Pantone at albertz benda in New York City on view from July XX through August XX, 2020.</p>
+            <p>Many of the works that Pantone created for Contactless were intented for the viewer to touch and reshape by hand.</p>
+            <p>Adapting to support health guidelines that preclude physical interaction, Pantone has developed digital copies of the works in order to translate the physical experience into your device.</p>
+            <p class="small pt-2"><a href="#page-expo" class="link">Read more</a></p>
+        </div>
+        <div class="page scrollable" id="page-fp">
+            <p>About <b>Felipe Pantone</b></p>
+            <p>Felipe Pantone [b. 1986, Buenos Aires, Argentina] lives and works in Valencia, Spain. Beginning his career as a graffiti artist at the age of twelve, he went on to receive a degree in Fine Art from University in Valencia. Recent exhibitions
+                include Beyond the Streets New York (2019) and Los Angeles (2018) curated be Roger Gastman; Art from the Streets, ArtScience Museum, Singapore (2018); Chromadynamica Dimensional, Mesa Contemporary Arts Center, Mesa, AZ (2017); and Vitality
+                and Verve at the Long Beach Museum of Art, Long Beach CA (2016).</p>
+            <p>For Pantone, his art is a meditation on the ways we consume visual information. Drawing inspiration from kinetic artists like Victor Vasarely and Carlos Cruz-Diez, Pantone's contemporary work produces the sensation of vibration as the viewer’s
+                position changes in relation to the work. To achieve the desired effect, the artist utilizes modeling software that allows for 3D insights into a project, which canthen be translated into frescoes, murals, paintings, and sculptures giving
+                tactile merit to what is occurring in the digital world.</p>
+        </div>
+        <div class="page scrollable" id="page-ab">
+            <p>About <b>albertz benda</b></p>
+            <p>Founded in 2015 by Thorsten Albertz and Marc Benda, albertz benda is devoted to an international contemporary visual arts program featuring rediscoveries as well as introductions — from seminal figures in their field whose work warrants further
+                exploration, to debut presentations of artists that are new to New York.</p>
+        </div>
+        <div class="page scrollable" id="page-expo">
+            <p class="text-uppercase" style="font-size: 0.8rem;">
+                <b>Felipe Pantone Contacless</b>
+                <br>from july XX through August XX, 2020
+                <br>New York City
+            </p>
+            <img class="img-fluid mb-3" src="img/expo.png">
+            <p><b>albertz benda</b> is thrilled to present <b>Felipe Pantone</b>: Contactless, the artist’s most ambitious New York exhibition to-date, on view from July XX through August XX, 2020. </p>
+            <p>In recent years, Pantone has been exploring manipulable sculptures and paintings. The interactive aspect stems from the artist's observation that information no longer flows in a linear fashion from established sources to consumers, but rather
+                splinters into multiple channels. For example Twitter, Instagram, TikTok and other user generated content now informs traditional news and entertainment media, and vice versa.</p>
+            <p>Many of the works that Pantone created for Contactless were intended for the viewer to touch and reshape by hand. Adapting to support health guidelines that preclude physical interaction, Pantone has developed digital copies of the works on
+                a WebGL app. This technology allows users to access accelerated 3D animations directly on standard browsers, without relying on plugins or installations.</p>
+            <p>As an artist whose output is firmly rooted in the tangible realm and who has always encouraged audience engagement, Pantone has produced a new interactive component that honors his initial concept:</p>
+            <p>
+                “These days, we spend a lot of time behind our screens, I believe in finding new ways of digitizing the physical world as it is experienced through our devices. Why rely only on photography or video when there are new technologies available that can take
+                us closer to the real experience? We're working with the cutting edge of web technology. These aren't mock-ups or 3D renders, but a way of faithfully experiencing how the artworks will function in real life through our mobile devices.”
+            </p>
+        </div>
+        <div class="page scrollable" id="page-end">
+            <p></p>
+            <p><b>albertz benda</b></p>
+            <p>
+                515 W 26TH STREET<br> NEW YORK NY 10001 (212)<br> 244-2579
+            </p>
+            <p><a href="mailto:info@albertzbenda.com">info@albertzbenda.com</a></p>
+            <p>-</p>
+            <p>Concept, art direction, and code by <b>FPSTUDIO</b></p>
+            <p>All rights reserved © 2020</p>
+        </div>
 
+        <!-- 1 SVD5 -->
+        <div class="page page-wide pt-4 page-center" id="page-figure-SVD5">
+            <div class="embed-responsive embed-responsive-fp">
+                <iframe class="embed-responsive-item" data-src="SVD5.html"></iframe>
+            </div>
+        </div>
+        <div class="page px-0 pt-0 scrollable" id="page-info-figure-SVD5">
+            <!--
+          <div class="embed-responsive embed-responsive-1by1">
+            <video class="embed-responsive-item"  playsinline muted preload="metadata">
+              <source src="https://firebasestorage.googleapis.com/v0/b/fpthree-67161.appspot.com/o/CDM8_ final.mp4?alt=media" type="video/mp4">
+            </video>
+          </div>
+          -->
+            <p class="figure-desc ">
+                <b>Subtractive Variability Dimensional 5</b><br>
+                <span>
+            Size: 15.748 x 15.748 x 15.748 inches / 40 x 40 x 40 cm<br>
+            Medium: UV paint on PMMA<br>
+            Year: 2020<br>
+            Ref: #SVD5
+            </span>
+            </p>
+            <div class="text-center">
+                <img class="img-fluid mb-3" src="img/1_SVD5/1_SVD5.jpg">
+                <img class="img-fluid mb-3" src="img/1_SVD5/2_SVD5.jpg">
+                <img class="img-fluid mb-3" src="img/1_SVD5/3_SVD5-10.jpg">
+                <img class="img-fluid mb-3" src="img/1_SVD5/4_-SVD5.jpg">
+            </div>
+        </div>
+
+        <!-- 2 CDM7 -->
+        <div class="page page-wide pt-4 page-center" id="page-figure-CDM7">
+            <div class="embed-responsive embed-responsive-fp">
+                <iframe class="embed-responsive-item" data-src="CDM7.html"></iframe>
+            </div>
+        </div>
+        <div class="page px-0 pt-0 scrollable" id="page-info-figure-CDM7">
+            <!--
+          <div class="embed-responsive embed-responsive-1by1">
+            <video class="embed-responsive-item"  playsinline muted preload="metadata">
+              <source src="https://firebasestorage.googleapis.com/v0/b/fpthree-67161.appspot.com/o/CDM8_ final.mp4?alt=media" type="video/mp4">
+            </video>
+          </div>
+          -->
+            <p class="figure-desc ">
+                <b>Chromadynamica Manipulable 7</b><br>
+                <span>
+              Size: 39.37 x 31.49 x 33.4646 inches /100 x 80 x 8.5 cm<br>
+              Medium: UV paint on aluminum composite mounted on plywood structure with metal guides<br>
+              Year: 2020<br>
+              Ref: #CDM7<br>              
+            </span>
+            </p>
+            <div class="text-center">
+                <img class="img-fluid mb-3" src="img/2_CDM7/1-CDM7.jpg">
+                <img class="img-fluid mb-3" src="img/2_CDM7/2-CDM7.jpg">
+                <img class="img-fluid mb-3" src="img/2_CDM7/3-CDM7.jpg">
+                <img class="img-fluid mb-3" src="img/2_CDM7/4-CDM7.jpg">
+                <img class="img-fluid mb-3" src="img/2_CDM7/5-CDM7.jpg">
+            </div>
+        </div>
+
+        <!-- 4 PIXT2 -->
+        <div class="page page-wide pt-4 page-center" id="page-figure-PIXT2">
+            <div class="embed-responsive embed-responsive-fp">
+                <iframe class="embed-responsive-item" data-src="PIXT2.html"></iframe>
+            </div>
+        </div>
+        <div class="page px-0 pt-0 scrollable" id="page-info-figure-PIXT2">
+            <!--
+          <div class="embed-responsive embed-responsive-1by1">
+            <video class="embed-responsive-item"  playsinline muted preload="metadata">
+              <source src="https://firebasestorage.googleapis.com/v0/b/fpthree-67161.appspot.com/o/CDM8_ final.mp4?alt=media" type="video/mp4">
+            </video>
+          </div>
+          -->
+            <p class="figure-desc ">
+                <b>Planned Iridescence XT2</b><br>
+                <span>
+              Size: 78.74 x 57.0866 x 1.181  inches  / 200 x 145 x 3 cm<br>
+              Medium: UV paint on PMMA and anodized aluminum<br>
+              Year: 2020<br>
+              Ref: #PIXT2<br>
+              <br>
+            </span>
+            </p>
+            <div class="text-center">
+                <img class="img-fluid mb-3" src="img/4_PIXT2/1_PIXT2.jpg">
+                <img class="img-fluid mb-3" src="img/4_PIXT2/2_PIXT2.jpg">
+                <img class="img-fluid mb-3" src="img/4_PIXT2/3_PIXT2.jpg">
+                <img class="img-fluid mb-3" src="img/4_PIXT2/4_PIXT2.jpg">
+            </div>
+        </div>
+
+        <!-- 5 SVD6 -->
+        <div class="page page-wide pt-4 page-center" id="page-figure-SVD6">
+            <div class="embed-responsive embed-responsive-fp">
+                <iframe class="embed-responsive-item" data-src="SVD6.html"></iframe>
+            </div>
+        </div>
+        <div class="page px-0 pt-0 scrollable" id="page-info-figure-SVD6">
+            <!--
+          <div class="embed-responsive embed-responsive-1by1">
+            <video class="embed-responsive-item"  playsinline muted preload="metadata">
+              <source src="https://firebasestorage.googleapis.com/v0/b/fpthree-67161.appspot.com/o/CDM8_ final.mp4?alt=media" type="video/mp4">
+            </video>
+          </div>
+          -->
+            <p class="figure-desc ">
+                <b>Subtractive Variability Dimensional 6</b><br>
+                <span>
+              Size: 47.24 x 47.24 x 47.24 inches / 120 x 120 x 120 cm<br>
+              Medium: UV paint on PMMA<br>
+              Year: 2020<br>
+              Ref: #SVD6<br>
+              <br>
+            </span>
+            </p>
+            <div class="text-center">
+                <img class="img-fluid mb-3" src="img/5_SVD6/1_SVD6.jpg">
+                <img class="img-fluid mb-3" src="img/5_SVD6/2_SVD6.jpg">
+                <img class="img-fluid mb-3" src="img/5_SVD6/3_SVD6.jpg">
+                <img class="img-fluid mb-3" src="img/5_SVD6/4_SVD6.jpg">
+                <img class="img-fluid mb-3" src="img/5_SVD6/5_SVD6.jpg">
+            </div>
+        </div>
+
+        <!-- 6 CDM8 -->
+        <div class="page page-wide pt-4 page-center" id="page-figure-CDM8">
+            <div class="embed-responsive embed-responsive-fp">
+                <iframe class="embed-responsive-item" data-src="CDM8.html"></iframe>
+            </div>
+        </div>
+        <div class="page px-0 pt-0 scrollable" id="page-info-figure-CDM8">
+            <div class="embed-responsive embed-responsive-1by1">
+                <video class="embed-responsive-item" playsinline muted preload="metadata">
+              <source src="https://firebasestorage.googleapis.com/v0/b/fpthree-67161.appspot.com/o/CDM8_ final.mp4?alt=media" type="video/mp4">
+            </video>
+            </div>
+            <p class="figure-desc ">
+                <b>Planned Iridescence 52</b><br>
+                <span>
+              Size: 39.37 x 25.98 x 1.181 inches / 100 x 66 x 3 cm<br>
+              Medium: UV paint on PMMA and anodized aluminum<br>
+              Year: 2020<br>
+              Ref: #CDM8
+            </span>
+            </p>
+            <div class="text-center">
+                <img class="img-fluid mb-3" src="img/6_CDM8/1_CDM8.jpg">
+                <img class="img-fluid mb-3" src="img/6_CDM8/2_CDM8.jpg">
+                <img class="img-fluid mb-3" src="img/6_CDM8/3_CDM8.jpg">
+                <img class="img-fluid mb-3" src="img/6_CDM8/4_CDM8.jpg">
+                <img class="img-fluid mb-3" src="img/6_CDM8/5_CDM8.jpg">
+                <img class="img-fluid mb-3" src="img/6_CDM8/CDM8-27.jpg">
+            </div>
+        </div>
+
+        <!-- 7 PI52 -->
+        <div class="page page-wide pt-4 page-center" id="page-figure-PI52">
+            <div class="embed-responsive embed-responsive-fp">
+                <iframe class="embed-responsive-item" data-src="PI52.html" allow="gyros"></iframe>
+            </div>
+        </div>
+        <div class="page px-0 pt-0 scrollable" id="page-info-figure-PI52">
+            <div class="embed-responsive embed-responsive-4by3">
+                <video class="embed-responsive-item" playsinline muted preload="metadata">
+              <source src="https://firebasestorage.googleapis.com/v0/b/fpthree-67161.appspot.com/o/PI52.mp4?alt=media" type="video/mp4">
+            </video>
+            </div>
+            <p class="figure-desc ">
+                <b>Planned Iridescence 52</b><br>
+                <span>
+              Size: 39.37 x 25.98 x 1.181 inches / 100 x 66 x 3 cm<br>
+              Medium: UV paint on PMMA and anodized aluminum<br>
+              Year: 2020<br>
+              Ref: #PI52
+            </span>
+            </p>
+            <div class="text-center">
+                <img class="img-fluid mb-3" src="img/7_PI52/1_PI52_low.jpg">
+                <img class="img-fluid mb-3" src="img/7_PI52/2_PI52-8Low.jpg">
+                <img class="img-fluid mb-3" src="img/7_PI52/3_PI52--low.jpg">
+                <img class="img-fluid mb-3" src="img/7_PI52/4_PI52-10low.jpg">
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <a href="#page-ab" class="p-2">AB</a>
+        <a href="#" class="fab close"></a>
+        <button class="arrow arrow-down"></button>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@reactivex/rxjs@6.5.5/dist/global/rxjs.umd.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>

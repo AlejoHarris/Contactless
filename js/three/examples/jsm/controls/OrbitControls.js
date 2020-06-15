@@ -114,6 +114,19 @@ var OrbitControls = function ( object, domElement ) {
 
 	};
 
+	this.setPolarAngle = function (angle) {
+
+		rotateLeft(angle);
+		this.update();
+
+	};
+
+	this.setAzimuthalAngle = function (angle) {
+		rotateUp(angle);
+		this.update();
+
+	};
+
 	this.saveState = function () {
 
 		scope.target0.copy( scope.target );
