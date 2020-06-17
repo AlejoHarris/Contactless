@@ -27,7 +27,6 @@ header {
     align-items: center;
 }
 header, footer {
-    padding: 15px;
     max-width: 900px;
     margin: 0 auto;
     width: 100%;
@@ -36,10 +35,17 @@ header, footer {
 }
 footer {
   position: fixed;
+  width: 100%;
+  max-width: 100%;
   bottom: 40px;
   height: 0;
   padding: 0;
   margin: 0;
+}
+footer .wrapper {
+    position: relative;
+    margin: 0 auto;
+    max-width: 900px;
 }
 header a, header h1, footer a {
     font-size: 1.2rem;
@@ -123,13 +129,14 @@ header a, header h1, footer a {
 }
 .fab {
     position: absolute;
-    bottom: 30px;
-    right: 40px;
+    bottom: 45px;
+    right: 50px;
     z-index: 99;
     background: url('img/plus.png') center center no-repeat;
     background-size: contain;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
+    opacity: 0.7;
     display: block;
     transform: rotate(0deg);
     transition: all 0.3s ease;
@@ -139,7 +146,7 @@ header a, header h1, footer a {
 }
 
 .arrow {
-    background: url(img/flecha.png) center center no-repeat;
+    background: url(img/flecha_web.svg) center center no-repeat;
     background-size: 30px 30px;
     width: 60px;
     height: 60px;
@@ -147,12 +154,13 @@ header a, header h1, footer a {
     position: fixed;
     z-index: 4;
     border: none;
+    transform: scale(1.2);
     /*transition: opacity 0.3s ease;*/
-    animation: arrowAnim 1s infinite;
+    animation: arrowAnim 1.5s infinite;
 }
 @keyframes arrowAnim {
     0% { opacity: 1 }
-    50% { opacity: 0.5 }
+    50% { opacity: 0.6 }
     100% { opacity: 1 }
 }
 .arrow:hover, .arrow:active {
@@ -165,12 +173,22 @@ button:focus {
 
 .arrow-down {
     bottom: 5px;
-    transform: rotate(180deg);
 }
 
 .arrow-up {
     top: 25px;
+    transform: rotate(180deg) scale(1.2);
 }
+
+@media (min-width : 900px) {
+    .arrow {
+        transform: scale(1.4);
+    }
+    .arrow-up {
+        transform: rotate(180deg) scale(1.4);
+    }
+}
+.p
 
 .figure-desc {
     font-size: 0.7rem;

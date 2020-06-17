@@ -84,7 +84,7 @@ function init() {
     document.body.appendChild(container);
 
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.25, 100);
-    camera.position.set(0, 0.4, 1.5);
+    camera.position.set(0, 0.465, 1.5);
 
     scene = new THREE.Scene();
 
@@ -339,6 +339,6 @@ function animate() {
     deviceCon.update();
     window.requestAnimationFrame(animate);
     if (finished) updatePos();
-    camera.lookAt(0, 0.44155, 0);
+    camera.lookAt(0, 0.465, 0);
     renderer.render(scene, camera);
 }

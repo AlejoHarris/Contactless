@@ -36,7 +36,7 @@ if (initialPage && initialPage.length) {
 const $pageWrapper = $('.page-wrapper');
 
 
-const figures = ['SVD5', 'CDM7', 'PIXT2', 'SVD6', 'PI52', 'CDM8']
+const figures = ['SVD5', 'CDM7', 'PIXT2', 'SVD6',  'CDM8', 'PI52']
 
 /**
  * FAB BUTTON
@@ -79,9 +79,13 @@ currentPage$.subscribe(newPage => {
 })
 
 currentPage$.subscribe(newPage => {  
-  const iframe = $('#' + newPage).find('iframe').get(0);
-  $('iframe').attr('src','');
-  if (iframe) {
+  const figure = newPage.split('figure-')[1]
+  const iframe = $('#page-figure-' + figure).find('iframe').get(0);
+  [...document.querySelectorAll('iframe')].filter(
+      el => el.src && el.src.indexOf(figure) === -1
+  ).forEach(el => el.setAttribute('src', ''))
+  //$('iframe').filter(function() { return $(this).attr('src').indexOf('figure') == -1}).attr('src','');
+  if (iframe && iframe.getAttribute('src') !== $(iframe).attr('data-src')) {
     iframe.setAttribute('src', $(iframe).attr('data-src')); 
   }
 })
