@@ -12,6 +12,7 @@ let objMax = 0.5625;
 
 var container, controls, dragCon, timer, deviceCon, firstTime = true,
     hasGyro = false,
+    gyro = false,
     request = false,
     rx = 0,
     ry = 0;
@@ -46,16 +47,21 @@ var isMobile = {
 };
 
 var hiddenDiv = document.getElementById("overlay");
-if (typeof(DeviceMotionEvent.requestPermission) === "function") {
-    //document.getElementById("text").innerHTML = DeviceMotionEvent.requestPermission().response;
-    DeviceMotionEvent.requestPermission().then(response => {
-        if (response == "granted") {
-            init();
-            animate();
-        }
-    }).catch(request = true);
+try {
+    if (typeof(DeviceMotionEvent.requestPermission) === "function") {
+        //document.getElementById("text").innerHTML = DeviceMotionEvent.requestPermission().response;
+        DeviceMotionEvent.requestPermission().then(response => {
+            if (response == "granted") {
+                init();
+                animate();
+            }
+        }).catch(request = true);
 
-} else {
+    } else {
+        init();
+        animate();
+    }
+} catch (e) {
     init();
     animate();
 }
@@ -79,7 +85,7 @@ function init() {
     document.body.appendChild(container);
 
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.25, 100);
-    camera.position.set(0, 0.4, 2.5);
+    camera.position.set(0, 0.4, 3);
 
     scene = new THREE.Scene();
 
@@ -194,8 +200,8 @@ function init() {
 
     controls = new OrbitControls(camera, renderer.domElement);
     controls.addEventListener('onclick', animate); // use if there is no animation loop
-    controls.minDistance = 1.5;
-    controls.maxDistance = 3;
+    controls.minDistance = 2;
+    controls.maxDistance = 2;
     controls.minPolarAngle = Math.PI / 4; // radians
     controls.maxPolarAngle = Math.PI * 3 / 4;
     controls.minAzimuthAngle = -Math.PI / 4;
@@ -207,8 +213,8 @@ function init() {
 
     if (isMobile.any()) {
         camera.position.set(0, 0.4, 3);
-        controls.minDistance = 3;
-        controls.maxDistance = 5;
+        controls.minDistance = 4;
+        controls.maxDistance = 4;
     }
 
     dragCon = new DragControls(objects, camera, renderer.domElement);
@@ -235,7 +241,8 @@ function init() {
         hasGyro = true;
         timer = setTimeout(() => {
             hasGyro = false;
-        }, 10000)
+            gyro = true;
+        }, 2000)
     }, false);
 }
 
@@ -285,7 +292,7 @@ function updatePos() {
         tempx[index] = item.position.x;
         if (!dragged) {
             item.position.x = item.position.x - inertia[index];
-            inertia[index] = inertia[index] / 1.15;
+            inertia[index] = inertia[index] / 1.25;
             if (inertia[index] < 0.00000001 && inertia[index] > 0) {
                 inertia[index] = 0;
             }
@@ -329,7 +336,10 @@ function updatePos() {
 
 function animate() {
     if (!hasGyro) {
-        controls.enabled = true;
+        if (gyro) {
+            controls.enabled = true;
+            gyro = false;
+        }
     } else {
         controls.enabled = false;
     }

@@ -8,7 +8,9 @@ import { DeviceOrientationControls } from './three/examples/jsm/controls/DeviceO
 const thres = 0.040;
 
 var container, controls, dragCon, deviceCon, timer, firstTime = true,
+    lastLoop = new Date(),
     hasGyro = false,
+    gyro = false,
     request = false,
     rx = 0,
     ry = 0;
@@ -43,18 +45,22 @@ var isMobile = {
     }
 };
 
-
 var hiddenDiv = document.getElementById("overlay");
-if (typeof(DeviceMotionEvent.requestPermission) === "function") {
-    //document.getElementById("text").innerHTML = DeviceMotionEvent.requestPermission().response;
-    DeviceMotionEvent.requestPermission().then(response => {
-        if (response == "granted") {
-            init();
-            animate();
-        }
-    }).catch(request = true);
+try {
+    if (typeof(DeviceMotionEvent.requestPermission) === "function") {
+        //document.getElementById("text").innerHTML = DeviceMotionEvent.requestPermission().response;
+        DeviceMotionEvent.requestPermission().then(response => {
+            if (response == "granted") {
+                init();
+                animate();
+            }
+        }).catch(request = true);
 
-} else {
+    } else {
+        init();
+        animate();
+    }
+} catch (e) {
     init();
     animate();
 }
@@ -69,6 +75,7 @@ if (request) {
 }
 
 function init() {
+
 
     var overlay = document.getElementById('overlay');
     overlay.remove();
@@ -190,8 +197,8 @@ function init() {
 
     controls = new OrbitControls(camera, renderer.domElement);
     controls.addEventListener('onclick', animate); // use if there is no animation loop
-    controls.minDistance = 1;
-    controls.maxDistance = 2;
+    controls.minDistance = 1.7;
+    controls.maxDistance = 1.7;
     controls.minPolarAngle = Math.PI / 4; // radians
     controls.maxPolarAngle = Math.PI * 3 / 4;
     controls.minAzimuthAngle = -Math.PI / 4;
@@ -225,7 +232,8 @@ function init() {
         hasGyro = true;
         timer = setTimeout(() => {
             hasGyro = false;
-        }, 10000)
+            gyro = true;
+        }, 2000)
     }, false);
 }
 
@@ -318,8 +326,12 @@ function updatePos() {
 }
 
 function animate() {
+
     if (!hasGyro) {
-        controls.enabled = true;
+        if (gyro) {
+            controls.enabled = true;
+            gyro = false;
+        }
     } else {
         controls.enabled = false;
     }

@@ -35,16 +35,21 @@ var isMobile = {
 
 
 var hiddenDiv = document.getElementById("overlay");
-if (typeof(DeviceMotionEvent.requestPermission) === "function") {
-    //document.getElementById("text").innerHTML = DeviceMotionEvent.requestPermission().response;
-    DeviceMotionEvent.requestPermission().then(response => {
-        if (response == "granted") {
-            init();
-            animate();
-        }
-    }).catch(request = true);
+try {
+    if (typeof(DeviceMotionEvent.requestPermission) === "function") {
+        //document.getElementById("text").innerHTML = DeviceMotionEvent.requestPermission().response;
+        DeviceMotionEvent.requestPermission().then(response => {
+            if (response == "granted") {
+                init();
+                animate();
+            }
+        }).catch(request = true);
 
-} else {
+    } else {
+        init();
+        animate();
+    }
+} catch (e) {
     init();
     animate();
 }
@@ -77,7 +82,7 @@ function init() {
 
     scene.background = new THREE.Color(0xffffff);
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
-    camera.position.set(7, 0, 0);
+    camera.position.set(10, 0, 0);
     scene.add(camera);
     var box = new THREE.BoxBufferGeometry(1, 1, 1);
     var mat = new THREE.MeshBasicMaterial({
@@ -91,7 +96,7 @@ function init() {
 
     controls = new OrbitControls(camera, renderer.domElement);
     //controls.addEventListener('change', render);
-    controls.minDistance = 5;
+    controls.minDistance = 7;
     controls.maxDistance = 7;
     controls.minPolarAngle = Math.PI / 4; // radians
     controls.maxPolarAngle = Math.PI * 3 / 4;
@@ -216,7 +221,7 @@ function init() {
         hasGyro = true;
         timer = setTimeout(() => {
             hasGyro = false;
-        }, 10000)
+        }, 2000)
     }, false);
 }
 
@@ -228,15 +233,12 @@ function animate() {
         //if (beta < 0) beta = beta + 2*Math.PI;
         if (firstTime) {
             rx = alpha;
-            if (isMobile.any()) {
-                ry = beta - Math.PI / 2;
-            } else {
-                ry = beta - Math.PI / 4;
-            }
+
+            ry = beta - Math.PI / 2;
             firstTime = false;
         }
 
-        if (Math.abs(rx - alpha) < Math.PI / 2) {
+        if (Math.abs(rx - alpha) < Math.PI / 4 && alpha != undefined && beta != undefined) {
             controls.setPolarAngle(rx - alpha);
             controls.setAzimuthalAngle(ry - beta);
         }

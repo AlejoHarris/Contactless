@@ -40,19 +40,22 @@ var isMobile = {
     }
 };
 
-
-
 var hiddenDiv = document.getElementById("overlay");
-if (typeof(DeviceMotionEvent.requestPermission) === "function") {
-    //document.getElementById("text").innerHTML = DeviceMotionEvent.requestPermission().response;
-    DeviceMotionEvent.requestPermission().then(response => {
-        if (response == "granted") {
-            init();
-            animate();
-        }
-    }).catch(request = true);
+try {
+    if (typeof(DeviceMotionEvent.requestPermission) === "function") {
+        //document.getElementById("text").innerHTML = DeviceMotionEvent.requestPermission().response;
+        DeviceMotionEvent.requestPermission().then(response => {
+            if (response == "granted") {
+                init();
+                animate();
+            }
+        }).catch(request = true);
 
-} else {
+    } else {
+        init();
+        animate();
+    }
+} catch (e) {
     init();
     animate();
 }
@@ -294,7 +297,7 @@ function init() {
         hasGyro = true;
         timer = setTimeout(() => {
             hasGyro = false;
-        }, 10000)
+        }, 2000)
     }, false);
 }
 

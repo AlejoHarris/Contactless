@@ -41,7 +41,7 @@ function init() {
     new RGBELoader()
         .setDataType(THREE.UnsignedByteType)
         .setPath('assets/')
-        .load('FP.hdr', function(texture) {
+        .load('autoshop_01_2.hdr', function(texture) {
 
             var envMap = pmremGenerator.fromEquirectangular(texture).texture;
 
@@ -109,6 +109,7 @@ function init() {
     controls.addEventListener('onclick', render); // use if there is no animation loop
     controls.minDistance = 0.25;
     controls.maxDistance = 0.5;
+    //controls.dampingFactor = 2;
     controls.enableDamping = true;
     controls.enablePan = false;
     controls.autoRotate = true;
@@ -117,7 +118,7 @@ function init() {
     controls2.addEventListener('onclick', render); // use if there is no animation loop
     controls2.minDistance = 0.25;
     controls2.maxDistance = 0.5;
-    controls2.rotateSpeed = 2.0;
+    controls2.rotateSpeed = 0.7;
     controls2.enableDamping = true;
     controls2.dynamicDampingFactor = 0.1;
     controls2.noPan = true;
