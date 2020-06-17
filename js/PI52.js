@@ -93,8 +93,8 @@ function init() {
 
     controls = new OrbitControls(camera, renderer.domElement);
     //controls.addEventListener('change', render);
-    controls.minDistance = 1;
-    controls.maxDistance = 1.5;
+    controls.minDistance = 1.25;
+    controls.maxDistance = 1.25;
     controls.minPolarAngle = Math.PI / 4; // radians
     controls.maxPolarAngle = Math.PI * 3 / 4;
     controls.minAzimuthAngle = -Math.PI / 4;

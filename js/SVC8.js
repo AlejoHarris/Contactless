@@ -6,7 +6,9 @@ import { DragControls } from './three/examples/jsm/controls/DragControls.js';
 import { DeviceOrientationControls } from './three/examples/jsm/controls/DeviceOrientationControls.js';
 
 var container, controls, dragCon, timer, firstTime = true,
+    lastLoop = new Date(),
     hasGyro = false,
+    gyro = false,
     deviceCon, boxMesh, request = false;
 var camera, scene, renderer, objects = [],
     dy = 0,
@@ -251,8 +253,8 @@ function init() {
 
     controls = new OrbitControls(camera, renderer.domElement);
     controls.addEventListener('onclick', render); // use if there is no animation loop
-    controls.minDistance = 0.5;
-    controls.maxDistance = 2;
+    controls.minDistance = 1;
+    controls.maxDistance = 1;
     controls.minPolarAngle = Math.PI / 4; // radians
     controls.maxPolarAngle = Math.PI * 3 / 4;
     controls.minAzimuthAngle = -Math.PI / 4;
@@ -297,6 +299,7 @@ function init() {
         hasGyro = true;
         timer = setTimeout(() => {
             hasGyro = false;
+            gyro = true;
         }, 2000)
     }, false);
 }
@@ -345,7 +348,10 @@ function updatePos() {
 function animate() {
     //console.log(objects)
     if (!hasGyro) {
-        controls.enabled = true;
+        if (gyro) {
+            controls.enabled = true;
+            gyro = false;
+        }
     } else {
         controls.enabled = false;
     }

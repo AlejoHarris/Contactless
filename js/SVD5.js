@@ -107,8 +107,8 @@ function init() {
 
     controls = new OrbitControls(camera, renderer.domElement);
     controls.addEventListener('onclick', render); // use if there is no animation loop
-    controls.minDistance = 0.25;
-    controls.maxDistance = 0.5;
+    controls.minDistance = 0.6;
+    controls.maxDistance = 0.6;
     //controls.dampingFactor = 2;
     controls.enableDamping = true;
     controls.enablePan = false;
@@ -116,8 +116,8 @@ function init() {
 
     controls2 = new TrackballControls(camera, renderer.domElement);
     controls2.addEventListener('onclick', render); // use if there is no animation loop
-    controls2.minDistance = 0.25;
-    controls2.maxDistance = 0.5;
+    controls2.minDistance = 0.6;
+    controls2.maxDistance = 0.6;
     controls2.rotateSpeed = 0.7;
     controls2.enableDamping = true;
     controls2.dynamicDampingFactor = 0.1;
