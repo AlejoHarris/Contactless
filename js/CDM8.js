@@ -269,7 +269,6 @@ function updatePos() {
         controls.setPolarAngle(rx - alpha);
         controls.setAzimuthalAngle(ry - beta);
     }
-
     rx = alpha;
     ry = beta;
     let counter = indexSel;

@@ -8,6 +8,7 @@ import { DeviceOrientationControls } from './three/examples/jsm/controls/DeviceO
 var renderer, scene, camera, controls, angle, timer, finished = false,
     hasGyro = false,
     request = false,
+    gyro = false,
     textureOut, firstTime = true,
     rx = 0,
     ry = 0,
@@ -86,15 +87,16 @@ function init() {
         color: 0xff0000
     })
     boxMesh = new THREE.Mesh(box, mat);
-    boxMesh.position.set(-0.465, 0, 0);
+    boxMesh.position.set(0, 0, 0);
     scene.add(boxMesh);
-    boxMesh.visible = false
+    boxMesh.visible = false;
+
     deviceCon = new DeviceOrientationControls(boxMesh);
 
     controls = new OrbitControls(camera, renderer.domElement);
     //controls.addEventListener('change', render);
-    controls.minDistance = 1.25;
-    controls.maxDistance = 1.25;
+    controls.minDistance = 1.5;
+    controls.maxDistance = 1.5;
     controls.minPolarAngle = Math.PI / 4; // radians
     controls.maxPolarAngle = Math.PI * 3 / 4;
     controls.minAzimuthAngle = -Math.PI / 4;
@@ -198,45 +200,53 @@ function init() {
         hasGyro = true;
         timer = setTimeout(() => {
             hasGyro = false;
+            gyro = true;
         }, 2000)
     }, false);
 
 }
 
 function animate() {
-    if (isMobile.any()) {
-        var alpha = boxMesh.rotation.y;
-        //if (alpha < 0) alpha = alpha + 2*Math.PI;
-        var beta = boxMesh.rotation.x;
-        //if (beta < 0) beta = beta + 2*Math.PI;
-        if (firstTime) {
-            rx = alpha;
-            ry = beta - Math.PI / 2;
-            firstTime = false;
-        }
-
-        if (Math.abs(rx - alpha) < Math.PI / 4 && alpha != undefined && beta != undefined) {
-            controls.setPolarAngle(rx - alpha);
-            controls.setAzimuthalAngle(ry - beta);
-        }
-
-        rx = alpha;
-        ry = beta;
-    }
     if (finished) {
-        angle = controls.getAzimuthalAngle();
-        textureOut.rotation = angle * 0.9 + Math.PI / 2;
-        //var temp = map(angle, -Math.PI / 4, Math.PI / 4, 0.4, 1);
-        //var temp2 = map(angle, Math.PI / 4, -Math.PI / 4, 1, 0.4);
-        //textureOut.repeat.set(temp, temp2);
+        if (isMobile.any()) {
+            var alpha = boxMesh.rotation.y;
+            //if (alpha < 0) alpha = alpha + 2*Math.PI;
+            var beta = boxMesh.rotation.x;
+            //if (beta < 0) beta = beta + 2*Math.PI;
+            if (firstTime) {
+                rx = alpha;
+                ry = beta;
+                firstTime = false;
+            }
+
+            if (Math.abs(rx - alpha) < Math.PI / 2 && Math.abs(ry - beta) < Math.PI / 6) {
+                controls.setPolarAngle(rx - alpha);
+                controls.setAzimuthalAngle(ry - beta);
+            }
+            console.log(rx, ry);
+
+            rx = alpha;
+            ry = beta;
+
+        }
+        if (finished) {
+            angle = controls.getAzimuthalAngle();
+            textureOut.rotation = angle * 0.9 + Math.PI / 2;
+            //var temp = map(angle, -Math.PI / 4, Math.PI / 4, 0.4, 1);
+            //var temp2 = map(angle, Math.PI / 4, -Math.PI / 4, 1, 0.4);
+            //textureOut.repeat.set(temp, temp2);
+        }
+        if (!hasGyro) {
+            if (gyro) {
+                controls.enabled = true;
+                gyro = false;
+            }
+        } else {
+            controls.enabled = false;
+        }
+        deviceCon.update();
+        controls.update();
     }
-    if (!hasGyro) {
-        controls.enabled = true;
-    } else {
-        controls.enabled = false;
-    }
-    deviceCon.update();
-    controls.update();
     requestAnimationFrame(animate);
     render();
 }
